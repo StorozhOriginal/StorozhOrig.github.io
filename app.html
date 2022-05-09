@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://storozhoriginal.github.io/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="https://bootstrap-4.ru/docs/3.3.2/assets/ico/favicon.ico">
+
+    <title>Потребление калорий в сутки</title>
+
+    
+    <link href="./mainScreen_files/bootstrap.min.css" rel="stylesheet">
+
+   
+    <link href="./mainScreen_files/jumbotron.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+<script async="" src="./storozhoriginal.github.io_files/analytics.js.Без названия"></script><script type="text/javascript" async="" src="./storozhoriginal.github.io_files/watch.js.Без названия"></script><script async="" src="./storozhoriginal.github.io_files/analytics.js(1).Без названия"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4481610-59', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+             
+
+           
+
+        
+        </div>
+             <nav>
+         <ul class="nav nav-pills pull-right">
+           <li role="presentation"><a href="index.html">Домашняя страница</a></li>
+            <li role="presentation"><a href="page2.html">Вторая страница</a></li>
+            <li role="presentation" class="active"><a href="app.html">Примеры калькуляторов</a></li>
+            <li role="presentation"><a href="app2.html">Индекс Массы Тела</a></li> 
+ 
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        
+        
+    
+        <h1>Калькулятор расчета потребления калорий</h1>
+          Пример расчета суточного потребления калорий в зависимости от пола, параметров и уровня среденей физической активности. Для того, чтобы  воспользаваться калькулятором укажите ниже данные в соответсвующих полях и калькулятор расчитает количество калорий, которое организм потребляет за сутки в соотвествии с активностью.
+          <!-- тег вставки первого калькулятора-->
+
+
+          <div class="calculating__field">
+                <div class="calculating__subtitle">
+                    Ваш пол
+                </div>
+                <div class="calculating__choose" id="gender">
+                    <div id="woman" class="calculating__choose-item">Женщина</div>
+                    <div id="man" class="calculating__choose-item calculating__choose-item_active">Мужчина</div>
+                </div>
+
+                <div class="calculating__subtitle">
+                    Ваши параметры
+                </div>
+                <div class="calculating__choose calculating__choose_medium">
+                    <input type="text" id="height" placeholder="Введите рост" class="calculating__choose-item">
+                    <input type="text" id="weight" placeholder="Введите вес" class="calculating__choose-item">
+                    <input type="text" id="age" placeholder="Введите возраст" class="calculating__choose-item">
+                </div>
+
+                  <div class="calculating__subtitle">
+                    Выберите вашу физическая активность
+                </div>
+                <div class="calculating__choose calculating__choose_big">
+                    <div id="low" data-ratio="1.2" class="calculating__choose-item">Низкая активность </div>
+                    <div id="small" data-ratio="1.375" class="calculating__choose-item">Невысокая активность</div>
+                    <div id="medium" data-ratio="1.55" class="calculating__choose-item">Умеренная активность</div>
+                    <div id="high" data-ratio="1.725" class="calculating__choose-item calculating__choose-item_active">Высокая активность</div>
+                </div>
+
+                 <div class="calculating__divider"></div>
+
+                <div class="calculating__total">
+                    <div class="calculating__subtitle">
+                        Ваша суточная норма калорий:
+                    </div>
+                    <div class="calculating__result">
+                        <span>____</span> ккал
+                    </div>
+                    <div id="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+.calculating {
+    padding: 50px 0
+}
+
+.calculating .title {
+    text-align: center
+}
+
+.calculating__field {
+    width: 100%;
+    margin-top: 50px;
+    background: rgba(146, 242, 255, .15);
+    padding: 30px 0 40px 0
+}
+
+.calculating__subtitle {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px
+}
+
+.calculating__subtitle:first-child {
+    margin-top: 0
+}
+
+.calculating #gender:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(../icons/switch.svg) center center/cover no-repeat
+}
+
+.calculating__choose {
+    position: relative;
+    display: flex;
+    margin-top: 30px;
+    justify-content: center
+}
+
+.calculating__choose-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 50px;
+    padding: 0 10px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    outline: 0;
+    transition: .3s all
+}
+
+.calculating__choose-item_active {
+    color: #fff;
+    background-color: #54ed39
+}
+
+.calculating__choose_medium {
+    max-width: 743px;
+  width:auto;
+    justify-content: center;
+    margin: 30px auto 0 auto
+}
+
+.calculating__choose_big {
+    max-width: 930px;
+  width:auto;
+    justify-content: space-between;
+    margin: 30px auto 0 auto
+}
+
+.calculating__choose_big .calculating__choose-item {
+    width: 200px
+}
+
+.calculating__divider {
+       max-width: 490px;
+  width:auto;
+    height: 1px;
+    margin: 40px auto;
+    background-color: rgba(0, 0, 0, .2)
+}
+
+.calculating__total {
+    max-width: 490px;
+  width:auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.calculating__result {
+    font-size: 18px;
+    font-weight: 700
+}
+
+.calculating__result span {
+    font-size: 42px
+}
+</style>
+
+<script>
+///// CALCULATOR
+
+let gender = intensity = 0;
+formData = document.querySelectorAll('.calculating__choose_medium input');
+
+document.querySelectorAll('.calculating__choose-item_active').forEach(function(elem) {
+    if(elem.parentNode.id === 'gender') {
+        gender = elem.id;
+    } else {
+        intensity = +elem.dataset.ratio;
+    };
+    
+});
+
+function getBlockContent(parentSelector, element, action) {
+
+    function checkingActiveElement(elem){
+        elem.parentNode.querySelectorAll(`${element}`).forEach(function(e){
+            e.classList.remove(`${action}`);
+        });                       
+        elem.classList.add(`${action}`);
+        if(elem.parentNode.id === 'gender') {
+            gender = elem.id;
+            localStorage.setItem('gender', gender);    
+        } else {                
+            intensity = +elem.dataset.ratio;
+            localStorage.setItem('intensity', intensity);    
+        }
+    }
+
+    elements = document.querySelectorAll(`${parentSelector} ${element}`);
+     elements.forEach(function(elem){  
+
+        if(localStorage.getItem('gender')){
+            checkingActiveElement(document.querySelector(`#${localStorage.getItem('gender')}`));
+            };
+        if(localStorage.getItem('intensity')){
+            checkingActiveElement(document.querySelector(`[data-ratio="${localStorage.getItem('intensity')}"]`));
+            };
+
+        elem.addEventListener('click', function() {
+            checkingActiveElement(this);
+            calculateResult(gender, intensity);
+        });        
+    });
+   
+};
+
+function calculateResult(gender, intensity){
+    formData.forEach((input) => {
+        if(input.id === 'weight') {
+            weight = +input.value;
+        }
+        if(input.id === 'height') {
+            height = +input.value;
+        }
+        if(input.id === 'age') {
+            age = +input.value;
+        };
+        input.addEventListener('change', function(){
+            if(input.id === 'weight') {
+                weight = +input.value;
+                localStorage.setItem('weight', weight);
+            }
+            if(input.id === 'height') {
+                height = +input.value;
+                localStorage.setItem('height', height);
+            }
+            if(input.id === 'age') {
+                age = +input.value;
+                localStorage.setItem('age', age);
+            };
+        });
+    });
+    if(!weight || !height || !age) {
+            result = '____';
+            document.querySelector("#clear").innerHTML = '';
+        } else {
+        if(gender === 'woman') {
+            result = Math.floor(((10 * weight) + (6.25 * height) - (5 * age) - 161) * intensity);
+        } else {
+            result = Math.floor(((10 * weight) + (6.25 * height) - (5 * age) + 5) * intensity);
+        }
+        document.querySelector("#clear").innerHTML = '&#10060;';
+    }
+    console.log(weight, height, age, result);
+    if(!result) {
+        result = '____';
+        document.querySelector("#clear").innerHTML = '';
+    } 
+    document.querySelector('.calculating__result span').textContent = result;
+    
+};
+
+function startupCondition() {
+    if(localStorage.getItem('weight')){
+        document.querySelector('#weight').value = localStorage.getItem('weight');
+    }
+    if(localStorage.getItem('height')){
+        document.querySelector('#height').value = localStorage.getItem('height');
+    }
+    if(localStorage.getItem('age')){
+        document.querySelector('#age').value = localStorage.getItem('age');
+    }
+    getBlockContent('#gender', 'div', 'calculating__choose-item_active');
+    getBlockContent('.calculating__choose_big', 'div', 'calculating__choose-item_active');
+    calculateResult(gender, intensity);
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    startupCondition();
+});
+
+document.querySelector("#clear").addEventListener('click', function(){
+    answer = confirm('Are you sure you want to clear your results?');
+    if(answer) {
+        localStorage.removeItem('height');
+        localStorage.removeItem('weight');
+        localStorage.removeItem('age');
+        localStorage.removeItem('intensity');
+        localStorage.removeItem('gender');
+        document.querySelector('#weight').value = localStorage.getItem('weight');
+        document.querySelector('#height').value = localStorage.getItem('height');
+        document.querySelector('#age').value = localStorage.getItem('age');
+        startupCondition();
+    };
+    
+});
+
+formData.forEach(elem => {
+    elem.addEventListener('change', function(){
+        calculateResult(gender, intensity);
+    });
+});
+</script>
+
+
+
+        </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+    
+ 
+
+<!-- <img src="./storozhoriginal.github.io_files/carpet_PNG57706.png" class="img-rounded"> -->
+        <h4></h4>
+        <p>
+     
+        </p>
+      <hr>
+
+      <footer>
+        <p>© Меринова Д.А. 2022 г.</p>
+      </footer>
+    </div>
+    <script src="./storozhoriginal.github.io_files/jquery.min.js.Без названия"></script>
+    <script src="./storozhoriginal.github.io_files/bootstrap.min.js.Без названия"></script>
+  
+</body></html>
